@@ -4,6 +4,7 @@ use_frameworks!
 
 target 'CatApp' do
 
+pod 'SwiftyGif'
 pod 'AFNetworking', '~> 3.0'
 pod 'Alamofire', '~> 4.7'
 pod 'AlamofireImage', '~> 3.5'

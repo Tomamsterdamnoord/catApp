@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BC5E8495D04F2DD11664F54E /* Pods_CatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011CA09790E1C05DFEA1B464 /* Pods_CatApp.framework */; };
+		C02B4344229FBD660050A89F /* CatGifsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02B4343229FBD660050A89F /* CatGifsViewController.swift */; };
 		C083ADDA229E64280078D236 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C083ADD9229E64280078D236 /* AppDelegate.swift */; };
 		C083ADDC229E64280078D236 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C083ADDB229E64280078D236 /* MainViewController.swift */; };
 		C083ADDF229E64280078D236 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C083ADDD229E64280078D236 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		011CA09790E1C05DFEA1B464 /* Pods_CatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D1A82801324DFC59142DF1 /* Pods-CatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CatApp/Pods-CatApp.release.xcconfig"; sourceTree = "<group>"; };
 		5566238285A2F6FC4F53AE4A /* Pods-CatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CatApp/Pods-CatApp.debug.xcconfig"; sourceTree = "<group>"; };
+		C02B4343229FBD660050A89F /* CatGifsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatGifsViewController.swift; sourceTree = "<group>"; };
 		C083ADD6229E64280078D236 /* CatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C083ADD9229E64280078D236 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C083ADDB229E64280078D236 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				C083ADDB229E64280078D236 /* MainViewController.swift */,
+				C02B4343229FBD660050A89F /* CatGifsViewController.swift */,
 				C083AE0A229E68730078D236 /* CatTableViewCell.swift */,
 				C083AE0B229E68730078D236 /* CatTableViewCell.xib */,
 			);
@@ -332,12 +335,14 @@
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyGif/SwiftyGif.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyGif.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -371,6 +376,7 @@
 			files = (
 				C083AE12229E6D940078D236 /* RequestManager.swift in Sources */,
 				C083AE14229E6E060078D236 /* DetailViewController.swift in Sources */,
+				C02B4344229FBD660050A89F /* CatGifsViewController.swift in Sources */,
 				C083AE0C229E68730078D236 /* CatTableViewCell.swift in Sources */,
 				C083ADE2229E64280078D236 /* CatApp.xcdatamodeld in Sources */,
 				C083ADDC229E64280078D236 /* MainViewController.swift in Sources */,
@@ -553,10 +559,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5329A57VRY;
 				INFOPLIST_FILE = CatApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bob.CatApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -572,10 +575,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5329A57VRY;
 				INFOPLIST_FILE = CatApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bob.CatApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -591,11 +591,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5329A57VRY;
 				INFOPLIST_FILE = CatAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bob.CatAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -612,11 +608,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5329A57VRY;
 				INFOPLIST_FILE = CatAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bob.CatAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -632,11 +624,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5329A57VRY;
 				INFOPLIST_FILE = CatAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bob.CatAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -652,11 +640,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5329A57VRY;
 				INFOPLIST_FILE = CatAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bob.CatAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

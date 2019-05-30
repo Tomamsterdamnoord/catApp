@@ -12,6 +12,31 @@ import Alamofire
 
 class RequestManager {
     
+    static func getCatGif( result:@escaping (_:[Dictionary<String, Any>]) -> Void) {
+        
+        let APIKey = "bd25b446-84e7-4a33-94c4-1829dcb2e6fd"
+        let headers = [ "x-api-key" : "\(APIKey)"]
+        let url = "https://api.thecatapi.com/v1/images/search?limit=100&page=10&order=Desc"
+        
+        var catGifDict = [Dictionary<String, Any>] ()
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            
+            switch response.result {
+            case .success( _):
+                guard let json = response.result.value as?  [Dictionary<String, Any>] else {return}
+                print ("JSON response: \(json)")
+                catGifDict = json
+            case .failure(let error):
+                print("error \(error)")
+            }
+            result(catGifDict)
+        }
+        
+        
+        
+    }
+    
     static func imageGet( result:@escaping (_:NSDictionary) -> Void) {
         
         let APIKey =  "563492ad6f91700001000001cf1d8b8f3c1346d28ac42b8f10c15729"
@@ -28,9 +53,9 @@ class RequestManager {
                 switch response.result{
                 case .success( _):
                     let json = response.result.value as! NSDictionary
-                    print("serviceForNewsFeed response \(json)")
+                    print("response \(json)")
                     imageDict = json
-                    print("serviceForNewsFeed response \(json)")
+                    print("response \(json)")
                 case .failure(let error):
                     print("error \(error)")
                 }
@@ -56,9 +81,9 @@ class RequestManager {
                 switch response.result{
                 case .success( _):
                     let json = response.result.value as! NSDictionary
-                    print("serviceForNewsFeed response \(json)")
+                    print("response \(json)")
                     imageDict = json
-                    print("serviceForNewsFeed response \(json)")
+                    print("response \(json)")
                 case .failure(let error):
                     print("error \(error)")
                 }

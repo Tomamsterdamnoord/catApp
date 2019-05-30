@@ -17,23 +17,27 @@ PODS:
   - Alamofire (4.8.2)
   - AlamofireImage (3.5.2):
     - Alamofire (~> 4.8)
+  - SwiftyGif (5.1.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - Alamofire (~> 4.7)
   - AlamofireImage (~> 3.5)
+  - SwiftyGif
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - Alamofire
     - AlamofireImage
+    - SwiftyGif
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
+  SwiftyGif: f7702483db93586a41f04f4927cd682852a2fa10
 
-PODFILE CHECKSUM: 17c8d1b722980502c0ebb22542da24b8258c60ca
+PODFILE CHECKSUM: 2727390407473155d7fe4c8ad60c4111ead334e6
 
 COCOAPODS: 1.5.3
