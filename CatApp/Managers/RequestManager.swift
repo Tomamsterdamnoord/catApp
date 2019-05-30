@@ -16,7 +16,7 @@ class RequestManager {
         
         let APIKey = "bd25b446-84e7-4a33-94c4-1829dcb2e6fd"
         let headers = [ "x-api-key" : "\(APIKey)"]
-        let url = "https://api.thecatapi.com/v1/images/search?limit=100&page=10&order=Desc"
+        let url = "https://api.thecatapi.com/v1/images/search?limit=100&mime_types=gif"
         
         var catGifDict = [Dictionary<String, Any>] ()
         
