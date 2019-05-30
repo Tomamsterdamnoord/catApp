@@ -19,18 +19,18 @@ class DetailViewController: UIViewController {
     
     var photoArray = [Dictionary<String, Any>] ()
     var selectedIndex = 0
- //   var currentImage = 0
-    
     var text = String()
     
     @IBAction func backButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
+    
     
     func setup() {
         imageView.backgroundColor = .white
@@ -38,6 +38,7 @@ class DetailViewController: UIViewController {
         loadImage()
         loadText()
     }
+    
     
     func loadText (){
         RequestManager.getText { (responseText) in

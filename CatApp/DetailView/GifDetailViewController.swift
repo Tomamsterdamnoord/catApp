@@ -12,33 +12,28 @@ import SwiftyGif
 
 class GifDetailViewController: UIViewController {
     
-    @IBOutlet weak var backButton: UIBarButtonItem!
-    
-    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var imageView: UIImageView!
+    
     var currentImage = String()
     var selectedIndex = 0
+    var photoArray = [Dictionary<String, Any>] ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-       
-
-    }
-    func setup (){
-        backButton.title = "back"
-        imageView.backgroundColor = .lightGray
-        setImage()
-        
     }
     
+    
+    func setup (){
+        imageView.backgroundColor = .white
+        setImage()
+    }
+    
+    
     func setImage() {
-        guard let url = URL(string: currentImage) else {return}
+        var photosArray = photoArray[selectedIndex]
+        guard let thisArray = photosArray["url"] as? String else {return}
+        guard let url = URL(string: thisArray) else {return}
         imageView.setGifFromURL(url)
-        
     }
 }

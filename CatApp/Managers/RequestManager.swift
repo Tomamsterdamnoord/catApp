@@ -32,9 +32,6 @@ class RequestManager {
             }
             result(catGifDict)
         }
-        
-        
-        
     }
     
     static func imageGet( result:@escaping (_:NSDictionary) -> Void) {
@@ -43,7 +40,7 @@ class RequestManager {
         let url = "https://api.pexels.com/v1/curated?per_page=30&page=1"
         let headers = [
             "Authorization": "\(APIKey)"
-        ]
+            ]
         
         var imageDict = NSDictionary()
         
@@ -71,7 +68,7 @@ class RequestManager {
         let url = "https://api.pexels.com/v1/search?query=\(searchString)&per_page=30&page=1"
         let headers = [
             "Authorization": "\(APIKey)"
-        ]
+            ]
         
         var imageDict = NSDictionary()
         
@@ -87,14 +84,13 @@ class RequestManager {
                 case .failure(let error):
                     print("error \(error)")
                 }
-                result(imageDict)
+            result(imageDict)
         }
     }
     
     
     static func getText( result:@escaping (_:String) -> Void){
         let url = "https://loripsum.net/api"
-        
         var thisText = String()
         
         Alamofire.request(url, method:  .get, parameters: nil).response { response in

@@ -15,7 +15,6 @@ class CatGifsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var tableView: UITableView!
     var photoArray =  [Dictionary<String, Any>] ()
-    var currentImage = String()
     var selectedIndex = 0
     
     override func viewDidLoad() {
@@ -23,17 +22,19 @@ class CatGifsViewController: UIViewController, UITableViewDelegate, UITableViewD
         setup()
     }
     
+    
     func setup () {
         loadGifs()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CatTableViewCell.NIBFILE, forCellReuseIdentifier: CatTableViewCell.IDENTIFIER)
-        
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return photoArray.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CatTableViewCell", for: indexPath)
@@ -41,16 +42,18 @@ class CatGifsViewController: UIViewController, UITableViewDelegate, UITableViewD
         let photosArray = photoArray[indexPath.item]
         guard let urlString = photosArray["url"] as? String else {return cell}
         guard let url = URL(string: urlString) else {return cell}
-        self.currentImage = urlString
         catCell.thisImageView.setGifFromURL(url)
-        
+        catCell.seeMoreLabel.text = NSLocalizedString("See GIF", comment: "")
+
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //    selectedIndex = indexPath.item
+        selectedIndex = indexPath.item
         performSegue(withIdentifier: "gifDetail", sender: self)
     }
+    
     
     func loadGifs(){
         RequestManager.getCatGif { (responseArray) in
@@ -59,12 +62,12 @@ class CatGifsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gifDetail",
             let gdvc = segue.destination as? GifDetailViewController {
-            gdvc.currentImage = currentImage
+            gdvc.photoArray = photoArray
+            gdvc.selectedIndex = selectedIndex
         }
     }
-    
-   
 }

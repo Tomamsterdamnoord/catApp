@@ -12,8 +12,7 @@ import UIKit
 import AFNetworking
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-   
-    
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -22,10 +21,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // loads slowly images
         setup()
     }
+    
     
     func setup () {
         loadData()
@@ -35,8 +33,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CatTableViewCell.NIBFILE, forCellReuseIdentifier: CatTableViewCell.IDENTIFIER)
-        
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return photoArray.count
@@ -68,7 +66,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             let dvc = segue.destination as? DetailViewController {
             dvc.photoArray = photoArray
             dvc.selectedIndex = selectedIndex
-  //          dvc.currentImage = selectedIndex
         }
     }
     
@@ -76,7 +73,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func loadData(){
         RequestManager.imageGet { (responseDict) in
             guard let photoArray = responseDict["photos"] as? [Dictionary<String, Any>] else {return}
-            print("succes")
+            print("success")
             self.photoArray = photoArray
             self.tableView.reloadData()
         }
@@ -86,7 +83,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func searchImages(searchString: String){
         RequestManager.searchImage(searchString: searchString) { (responseDict) in
             guard let photoArray = responseDict["photos"] as? [Dictionary<String, Any>] else {return}
-            print("succes")
+            print("success")
             self.photoArray = photoArray
             self.tableView.reloadData()
         }
@@ -99,9 +96,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             return
         }
         searchBar.resignFirstResponder()
-        guard let string = searchBar.text else { return }
-        
-        //must be english? Check API
+        guard let string = searchBar.text else {return}
         searchImages(searchString: string)
     }
     
