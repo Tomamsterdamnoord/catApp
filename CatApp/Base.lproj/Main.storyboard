@@ -219,11 +219,56 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="tableView" destination="VPk-WY-T97" id="qYs-cd-jJZ"/>
+                        <segue destination="REM-0A-nGG" kind="show" identifier="gifDetail" id="rzz-AT-11s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5oe-9g-Ebw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1044.375" y="895.77464788732391"/>
+        </scene>
+        <!--Gif Detail View Controller-->
+        <scene sceneID="3Fo-8b-zmz">
+            <objects>
+                <viewController id="REM-0A-nGG" customClass="GifDetailViewController" customModule="CatApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aLB-Cj-9Jp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sHQ-Mo-bna">
+                                <rect key="frame" x="0.0" y="56" width="320" height="174"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mys-VM-tNB">
+                                <rect key="frame" x="0.0" y="12" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="vU7-mB-GdE">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="OSt-e5-FKG">
+                                            <connections>
+                                                <action selector="backButtonPressed:" destination="REM-0A-nGG" id="s6P-Hs-uBq"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Dlh-Db-nbK" firstAttribute="bottom" secondItem="sHQ-Mo-bna" secondAttribute="bottom" constant="338" id="H4W-EV-ayA"/>
+                            <constraint firstItem="sHQ-Mo-bna" firstAttribute="top" secondItem="Dlh-Db-nbK" secondAttribute="top" constant="36" id="TqQ-Rm-cUa"/>
+                            <constraint firstItem="Dlh-Db-nbK" firstAttribute="trailing" secondItem="sHQ-Mo-bna" secondAttribute="trailing" id="fZm-VJ-p44"/>
+                            <constraint firstItem="sHQ-Mo-bna" firstAttribute="leading" secondItem="Dlh-Db-nbK" secondAttribute="leading" id="rlk-xe-j80"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Dlh-Db-nbK"/>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="OSt-e5-FKG" id="ZAJ-JK-ppy"/>
+                        <outlet property="imageView" destination="sHQ-Mo-bna" id="Lty-0I-UPp"/>
+                        <outlet property="navigationBar" destination="Mys-VM-tNB" id="nSu-Ob-lQv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R3w-Am-PMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1860" y="896.83098591549299"/>
         </scene>
     </scenes>
 </document>

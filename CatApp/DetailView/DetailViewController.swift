@@ -19,7 +19,7 @@ class DetailViewController: UIViewController {
     
     var photoArray = [Dictionary<String, Any>] ()
     var selectedIndex = 0
-    var currentImage = 0
+ //   var currentImage = 0
     
     var text = String()
     

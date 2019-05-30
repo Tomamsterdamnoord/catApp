@@ -15,6 +15,8 @@ class CatGifsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var tableView: UITableView!
     var photoArray =  [Dictionary<String, Any>] ()
+    var currentImage = String()
+    var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +40,16 @@ class CatGifsViewController: UIViewController, UITableViewDelegate, UITableViewD
         guard let catCell = cell as? CatTableViewCell else {return cell}
         let photosArray = photoArray[indexPath.item]
         guard let urlString = photosArray["url"] as? String else {return cell}
-       // guard let url = photoArray as? [Dictionary<String,Any>] else{return cell}
-      //  guard let url = URL(string: "https://cdn2.thecatapi.com/images/4k4.gif") else {return cell}
         guard let url = URL(string: urlString) else {return cell}
+        self.currentImage = urlString
         catCell.thisImageView.setGifFromURL(url)
-       // catCell.thisImageView.setImageWith(url)
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //    selectedIndex = indexPath.item
+        performSegue(withIdentifier: "gifDetail", sender: self)
     }
     
     func loadGifs(){
@@ -53,6 +59,12 @@ class CatGifsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gifDetail",
+            let gdvc = segue.destination as? GifDetailViewController {
+            gdvc.currentImage = currentImage
+        }
+    }
     
-    
+   
 }

@@ -65,11 +65,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detail",
-            let dvc = segue.destination as? DetailViewController
-        {
+            let dvc = segue.destination as? DetailViewController {
             dvc.photoArray = photoArray
             dvc.selectedIndex = selectedIndex
-            dvc.currentImage = selectedIndex
+  //          dvc.currentImage = selectedIndex
         }
     }
     
